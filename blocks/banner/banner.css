@@ -1,0 +1,42 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.banner > div {
+  width: 100%;
+}
+
+.banner picture {
+  display: block;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.banner h1,
+.banner h2,
+.banner h3 {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .banner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .banner > div:first-child {
+    flex: 1;
+  }
+
+  .banner > div:last-child {
+    flex: 1;
+    padding: 0 32px;
+  }
+}
