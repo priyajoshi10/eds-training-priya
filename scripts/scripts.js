@@ -10,6 +10,9 @@ import {
   loadSections,
   loadCSS,
   buildBlock,
+  readBlockConfig,
+  toClassName,
+  toCamelCase,
 } from './aem.js';
 
 if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -143,6 +146,28 @@ function decorateButtons(main) {
 }
 
 /**
+ * Turns a "Section Metadata" block's rows into classes/data attributes on
+ * its parent section, then removes the block from the page. E.g. a
+ * `Style: light` row adds a `light` class to the section.
+ * @param {Element} main The container element
+ */
+function decorateSectionMetadata(main) {
+  main.querySelectorAll('.section .section-metadata').forEach((block) => {
+    const section = block.closest('.section');
+    const meta = readBlockConfig(block);
+    Object.keys(meta).forEach((key) => {
+      if (key === 'style') {
+        const styles = meta.style.split(',').map((style) => toClassName(style.trim()));
+        section.classList.add(...styles);
+      } else {
+        section.dataset[toCamelCase(key)] = meta[key];
+      }
+    });
+    block.remove();
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -151,6 +176,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionMetadata(main);
   decorateBlocks(main);
   decorateButtons(main);
 }
