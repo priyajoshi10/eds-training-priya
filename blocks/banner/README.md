@@ -37,6 +37,22 @@ Styles are scoped to `.banner` in [banner.css](./banner.css):
 - Desktop (`900px`+): image and title sit side by side, each taking half
   the width.
 
+### Dark variant
+
+Name the block `Banner (dark)` in the table header cell to add a dark
+background and light text, on top of the base layout (additive, not a
+separate block):
+
+```html
+<div class="banner dark block">
+  ...
+</div>
+```
+
+Adds `background-color: #1a1a1a` and white text via `.banner.dark` in
+[banner.css](./banner.css). Existing banners authored as plain `Banner` are
+unaffected.
+
 ## Notes / TODO
 
 - Verify actual authored markup via `curl localhost:3000/<page>.plain.html`

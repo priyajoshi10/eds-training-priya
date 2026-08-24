@@ -40,3 +40,14 @@
     padding: 0 32px;
   }
 }
+
+.banner.dark {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.banner.dark h1,
+.banner.dark h2,
+.banner.dark h3 {
+  color: #fff;
+}
