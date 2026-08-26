@@ -1,0 +1,41 @@
+.employee-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.employee-list th,
+.employee-list td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.employee-list th {
+  font-weight: 600;
+  border-bottom: 2px solid #ccc;
+}
+
+.employee-list tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.employee-list-load-more-wrapper {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.employee-list-load-more {
+  border: 2px solid var(--text-color);
+  border-radius: 2.4em;
+  padding: 0.5em 1.5em;
+  background: transparent;
+  color: var(--text-color);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.employee-list-load-more:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
