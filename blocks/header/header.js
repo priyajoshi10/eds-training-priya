@@ -2,12 +2,14 @@
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
 /**
- * Dual-fetch the nav fragment. /content first (localhost / aem up),
- * then root (DA/EDS production). Metadata-independent by design.
+ * Dual-fetch the nav fragment. The root path (/nav.plain.html) resolves on both
+ * hosted EDS/DA and local `aem up`, so try it first to avoid a console 404 on
+ * hosted pages; fall back to /content/nav.plain.html for any setup that only
+ * serves the fragment under /content. Metadata-independent by design.
  */
 async function fetchNav() {
-  let resp = await fetch('/content/nav.plain.html');
-  if (!resp.ok) resp = await fetch('/nav.plain.html');
+  let resp = await fetch('/nav.plain.html');
+  if (!resp.ok) resp = await fetch('/content/nav.plain.html');
   if (!resp.ok) return null;
   const html = await resp.text();
   const container = document.createElement('div');
