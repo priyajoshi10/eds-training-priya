@@ -1,61 +1,114 @@
-.accordion-faq details {
-  border: 1px solid #dadada;
+/* Block: accordion-faq -- CSS matched to source computed styles (wknd-trendsetters.site) */
+
+/* Section-level vertical breathing room around intro + items (source ~128px,
+   less on mobile). White/transparent background -- no background color. */
+.accordion-faq.block {
+  padding: 64px 0;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.accordion-faq details + details {
-  margin-top: 24px;
+@media (width >= 900px) {
+  .accordion-faq.block {
+    padding: 128px 0;
+  }
 }
 
-.accordion-faq details p {
-  margin-bottom: 0.8em;
+/* Intro (h2 + lead paragraph) pulled in from preceding default content, centered */
+.accordion-faq .accordion-faq-intro {
+  margin-bottom: 48px;
+  text-align: center;
 }
 
-.accordion-faq details summary {
+.accordion-faq .accordion-faq-intro h2 {
+  margin: 0;
+}
+
+.accordion-faq .accordion-faq-intro p {
+  margin: 12px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 28.8px;
+  color: var(--text-color);
+}
+
+/* List = source .faq-list: vertical stack with small gap between items */
+.accordion-faq .accordion-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Each FAQ item = source .faq-item: thin dividers top and bottom */
+.accordion-faq .accordion-faq-item {
+  border-top: 1px solid rgb(232 232 232);
+  border-bottom: 1px solid rgb(232 232 232);
+}
+
+/* Question row = source .faq-question */
+.accordion-faq .accordion-faq-item-label {
   position: relative;
-  padding: 0 16px;
-  padding-right: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 40px 24px 0;
   cursor: pointer;
   list-style: none;
-  overflow: auto;
-  transition: background-color 0.2s;
 }
 
-.accordion-faq details[open] summary {
-  background-color: var(--light-color);
-}
-
-.accordion-faq details summary:focus,
-.accordion-faq details summary:hover {
-  background-color: var(--light-color);
-}
-
-.accordion-faq details summary::-webkit-details-marker {
+.accordion-faq .accordion-faq-item-label::-webkit-details-marker {
   display: none;
 }
 
-.accordion-faq details summary::after {
+/* Question text: 18px / 28.8px, weight 600, body font, black, not uppercased */
+.accordion-faq .accordion-faq-item-label p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28.8px;
+  color: rgb(0 0 0);
+  text-transform: none;
+}
+
+/* Expand icon = source SVG plus (20x20, 2px stroke, black); becomes minus when open */
+.accordion-faq .accordion-faq-item-label::before,
+.accordion-faq .accordion-faq-item-label::after {
   content: '';
   position: absolute;
+  right: 0;
   top: 50%;
-  right: 18px;
-  transform: translateY(-50%) rotate(135deg);
-  width: 6px;
-  height: 6px;
-  border: 2px solid;
-  border-width: 2px 2px 0 0;
-  transition: transform 0.2s;
+  background-color: rgb(0 0 0);
 }
 
-.accordion-faq details[open] summary::after {
-  transform: translateY(-50%) rotate(-45deg);
+/* horizontal bar (stays for both plus and minus) */
+.accordion-faq .accordion-faq-item-label::after {
+  width: 20px;
+  height: 2px;
+  transform: translateY(-50%);
 }
 
-.accordion-faq details .accordion-faq-item-body {
-  padding: 0 16px;
+/* vertical bar (only for the plus, hidden when open) */
+.accordion-faq .accordion-faq-item-label::before {
+  width: 2px;
+  height: 20px;
+  right: 9px;
+  transform: translateY(-50%);
+  transition: opacity 0.2s;
 }
 
-.accordion-faq details[open] .accordion-faq-item-body {
-  border-top: 1px solid #dadada;
-  background-color: var(--background-color);
+.accordion-faq .accordion-faq-item[open] .accordion-faq-item-label::before {
+  opacity: 0;
+}
+
+/* Answer body = source .faq-answer */
+.accordion-faq .accordion-faq-item-body {
+  padding: 0 32px 32px;
+}
+
+/* Answer text: 16px / 27.2px, body font, muted grey */
+.accordion-faq .accordion-faq-item-body p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 27.2px;
+  color: rgb(64 64 64);
 }

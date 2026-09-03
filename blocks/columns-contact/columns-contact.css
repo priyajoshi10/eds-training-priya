@@ -1,33 +1,94 @@
+/* columns-contact — "Let's connect" contact section.
+   Values extracted from https://wknd-trendsetters.site/faq computed styles.
+   Full-bleed light-gray band with a two-column (heading+lead / contact list) layout. */
+
+/* Full-bleed light-gray band (section background applied on the block itself). */
+.columns-contact.block {
+  box-sizing: border-box;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 128px 0;
+  background-color: var(--light-color);
+}
+
+/* Row = the single child; constrain to the page column and lay out the two columns.
+   Mobile-first: single column, stacked; desktop: 2 equal columns with 64px gap. */
 .columns-contact > div {
-  display: flex;
-  flex-direction: column;
-}
-
-.columns-contact img {
-  width: 100%;
-}
-
-.columns-contact > div > div {
-  order: 1;
-}
-
-.columns-contact > div > .columns-contact-img-col {
-  order: 0;
-}
-
-.columns-contact > div > .columns-contact-img-col img {
-  display: block;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: start;
 }
 
 @media (width >= 900px) {
   .columns-contact > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
   }
+}
 
-  .columns-contact > div > div {
-    flex: 1;
-    order: unset;
-  }
+/* Left column heading */
+.columns-contact h2 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+/* Left column lead paragraph */
+.columns-contact > div > div:first-child p {
+  margin: 16px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 28.8px;
+  color: rgb(64 64 64);
+}
+
+/* Right column — contact list labels */
+.columns-contact h3 {
+  margin: 32px 0 0;
+  font-family: var(--heading-font-family);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15.4px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: var(--link-color);
+}
+
+/* First label sits flush with the top */
+.columns-contact > div > div:last-child > *:first-child {
+  margin-top: 0;
+}
+
+/* Right column — contact values (email / phone / address) */
+.columns-contact > div > div:last-child p {
+  margin: 8px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 28.8px;
+  color: var(--text-color);
+}
+
+/* Contact links are black (not the global gray link color) */
+.columns-contact a:any-link {
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28.8px;
+  text-decoration: none;
+}
+
+.columns-contact a:hover {
+  text-decoration: underline;
 }

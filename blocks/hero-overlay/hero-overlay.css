@@ -1,47 +1,142 @@
-.hero-overlay-container .hero-overlay-wrapper {
-  max-width: unset;
-  padding: 0;
+/* Block: hero-overlay -- full-bleed dark CTA with rounded overlay card */
+
+/* Full-bleed dark band. The homepage is a single shared EDS .section, so the
+   dark background must live on THIS block (a 100vw band) -- painting
+   .hero-overlay-container would tint the whole shared section and its sibling
+   blocks (e.g. the transparent FAQ). The band goes on .block, not the wrapper,
+   because the global `main > .section > div` rule clamps the wrapper to 1200px.
+   Mirrors the cards-gallery / cards-article full-bleed pattern. */
+.hero-overlay.block {
+  box-sizing: border-box;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 128px 0;
+  background-color: var(--dark-color);
+  color: #fff;
 }
 
-.hero-overlay {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
-}
-
-.hero-overlay h1,
-.hero-overlay h2,
-.hero-overlay h3,
-.hero-overlay h4,
-.hero-overlay h5,
-.hero-overlay h6,
-.hero-overlay p {
+/* Constrained, centered content column */
+.hero-overlay.block > * {
+  box-sizing: border-box;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  color: var(--background-color);
+  padding: 0 24px;
 }
 
-.hero-overlay.no-image * {
-  color: var(--text-color);
+/* Rounded card that layers image, gradient and text */
+.hero-overlay .hero-overlay-card {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 448px;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.hero-overlay picture {
+/* Cover image fills the card */
+.hero-overlay .hero-overlay-image {
   position: absolute;
-  z-index: -1;
   inset: 0;
+  z-index: 0;
+}
+
+.hero-overlay .hero-overlay-image picture,
+.hero-overlay .hero-overlay-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+}
+
+/* Gradient overlay so bottom text stays legible */
+.hero-overlay .hero-overlay-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: linear-gradient(to top, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 0%) 60%);
+  pointer-events: none;
+}
+
+/* Text sits bottom-left on top of the overlay */
+.hero-overlay .hero-overlay-content {
+  position: relative;
+  z-index: 2;
+  max-width: 672px;
+  padding: 40px;
   box-sizing: border-box;
 }
 
-.hero-overlay img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero-overlay .hero-overlay-content h2 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.hero-overlay .hero-overlay-content p {
+  margin: 16px 0 0;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* "See more" CTA rendered as a white pill button */
+.hero-overlay .hero-overlay-content p:last-child {
+  margin-top: 32px;
+}
+
+.hero-overlay .hero-overlay-content a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  background-color: #fff;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.hero-overlay .hero-overlay-content a:hover,
+.hero-overlay .hero-overlay-content a:focus-visible {
+  background-color: transparent;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* No-image fallback: plain dark block with text */
+.hero-overlay.no-image .hero-overlay-card {
+  min-height: 0;
+}
+
+.hero-overlay.no-image .hero-overlay-card::after {
+  display: none;
 }
 
 @media (width >= 900px) {
-  .hero-overlay {
-    padding: 40px 32px;
+  .hero-overlay.block > * {
+    padding: 0 32px;
+  }
+
+  .hero-overlay .hero-overlay-content {
+    padding: 64px;
+  }
+
+  .hero-overlay .hero-overlay-content h2 {
+    font-size: 56px;
+    line-height: 1.1;
   }
 }

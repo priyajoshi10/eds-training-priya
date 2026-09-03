@@ -1,27 +1,125 @@
+/* Block: cards-article -- values from source computed styles */
+
+/* Full-bleed light-gray band. The block absorbs its intro (h2 + lead p) via JS
+   so intro + grid share one padded background. */
+.cards-article.block {
+  box-sizing: border-box;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 128px 0;
+  background-color: var(--light-color);
+}
+
+/* Center content on the same 1200px / 24px-padded column as the rest of the page. */
+.cards-article.block > * {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 24px;
+}
+
+/* Intro block: centered heading + lead paragraph */
+.cards-article .cards-article-intro {
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+.cards-article .cards-article-intro h2 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.cards-article .cards-article-intro p {
+  margin: 12px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 28.8px;
+  color: var(--text-color);
+}
+
 .cards-article > ul {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .cards-article > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  border: 1px solid rgb(232 232 232);
+  border-radius: 20px;
+  background-color: transparent;
+  overflow: hidden;
 }
 
-.cards-article .cards-article-card-body {
-  margin: 16px;
+.cards-article .cards-article-card-link {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .cards-article .cards-article-card-image {
   line-height: 0;
 }
 
-.cards-article > ul > li img {
+.cards-article .cards-article-card-image img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
+}
+
+.cards-article .cards-article-card-body {
+  padding: 24px;
+}
+
+.cards-article .cards-article-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+
+.cards-article .cards-article-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgb(244 254 139);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.cards-article .cards-article-date {
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  color: var(--link-color);
+}
+
+.cards-article .cards-article-card-body h3 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+@media (width >= 900px) {
+  .cards-article > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
