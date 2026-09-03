@@ -53,7 +53,10 @@
   background-color: var(--background-color);
 }
 
-/* Image column: 2-column grid of stacked cover images */
+/* Image column: 2-column collage of cover images.
+   EDS wraps all three <picture> elements inside a single <p> in the image
+   column's inner div. Make that <p> the 2-column grid so the pictures are the
+   grid items (two on top, third spanning full width — matches source). */
 .hero-split > div:first-child > div > p {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -61,6 +64,12 @@
   margin: 0;
 }
 
+/* Third image spans the full width (two on top, one wide below) */
+.hero-split > div:first-child > div > p > picture:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
 .hero-split picture {
   display: block;
 }
