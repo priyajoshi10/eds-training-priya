@@ -1,0 +1,239 @@
+{
+  "templates": [
+    {
+      "name": "landing-page",
+      "urls": [
+        "https://wknd-trendsetters.site/",
+        "https://wknd-trendsetters.site/fashion-trends-of-the-season",
+        "https://wknd-trendsetters.site/fashion-trends-young-adults"
+      ],
+      "coverageGaps": [],
+      "description": "Marketing landing layout: full-width hero followed by stacked content and CTA sections",
+      "blocks": [
+        {
+          "name": "section-hero-split",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "hero-split",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1)"
+          ]
+        },
+        {
+          "name": "section-gallery",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(2)"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "cards-gallery",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(2)"
+          ]
+        },
+        {
+          "name": "tabs-profile",
+          "instances": [
+            "#main-content > section.section:nth-of-type(3)"
+          ]
+        },
+        {
+          "name": "section-articles",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(4)"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#main-content > section.section.secondary-section:nth-of-type(4)"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "#main-content > section.section:nth-of-type(5)"
+          ]
+        },
+        {
+          "name": "hero-overlay",
+          "instances": [
+            "#main-content > section.section.inverse-section"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "article-listing",
+      "urls": [
+        "https://wknd-trendsetters.site/blog",
+        "https://wknd-trendsetters.site/case-studies",
+        "https://wknd-trendsetters.site/fashion-insights"
+      ],
+      "coverageGaps": [],
+      "description": "Index layout: hero header followed by a grid of teaser cards linking to detail pages",
+      "blocks": [
+        {
+          "name": "section-hero",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "hero-split",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1)"
+          ]
+        },
+        {
+          "name": "section-articles",
+          "instances": [
+            "#articles"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "cards-article",
+          "instances": [
+            "#articles"
+          ]
+        },
+        {
+          "name": "section-subscribe",
+          "instances": [
+            "#main-content > section.section.accent-section"
+          ],
+          "section": "accent"
+        }
+      ]
+    },
+    {
+      "name": "blog-article",
+      "urls": [
+        "https://wknd-trendsetters.site/blog/ace-pro-court-polo",
+        "https://wknd-trendsetters.site/blog/fashion-blog-post",
+        "https://wknd-trendsetters.site/blog/fashion-trends-young-culture",
+        "https://wknd-trendsetters.site/blog/fashion-trends-young-style",
+        "https://wknd-trendsetters.site/blog/flip-flop-summer-style",
+        "https://wknd-trendsetters.site/blog/latest-trends-young-casual-fashion",
+        "https://wknd-trendsetters.site/blog/street-style-trends"
+      ],
+      "coverageGaps": [],
+      "description": "Article detail layout: hero header followed by long-form body content sections",
+      "blocks": [
+        {
+          "name": "hero-article",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1)"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "faq-page",
+      "urls": [
+        "https://wknd-trendsetters.site/faq"
+      ],
+      "coverageGaps": [],
+      "description": "Support layout: hero header, accordion of expandable items, and supporting cards",
+      "blocks": [
+        {
+          "name": "section-hero",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "hero-split",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            "#main-content > section.section:nth-of-type(1)"
+          ]
+        },
+        {
+          "name": "section-contact",
+          "instances": [
+            "#main-content > section.section.secondary-section"
+          ],
+          "section": "light"
+        },
+        {
+          "name": "columns-contact",
+          "instances": [
+            "#main-content > section.section.secondary-section"
+          ]
+        },
+        {
+          "name": "section-cta",
+          "instances": [
+            "#main-content > section.section.accent-section"
+          ],
+          "section": "accent"
+        }
+      ]
+    },
+    {
+      "name": "card-gallery",
+      "urls": [
+        "https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport"
+      ],
+      "coverageGaps": [],
+      "description": "Gallery layout: hero header followed by a large repeating grid of content cards",
+      "blocks": [
+        {
+          "name": "hero-split",
+          "instances": [
+            "#main-content > header.section.secondary-section"
+          ]
+        },
+        {
+          "name": "cards-trend",
+          "instances": [
+            "#trends"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-content > section.section.secondary-section"
+          ]
+        },
+        {
+          "name": "section-cta",
+          "instances": [
+            "#main-content > section.section.accent-section"
+          ],
+          "section": "accent"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}
