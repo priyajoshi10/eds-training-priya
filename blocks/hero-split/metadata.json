@@ -1,0 +1,37 @@
+{
+  "variantName": "hero-split",
+  "baseBlock": "hero",
+  "version": "1.0.0",
+  "created": "2026-09-03T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://wknd-trendsetters.site/",
+    "originPage": "landing page (homepage)",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "landing-hero",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "heading + subheading + 2 CTAs + 3 images",
+    "buttonCount": 2,
+    "imageCount": 3
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "landing pages with a split text/image hero header",
+      "marketing pages needing a prominent top-of-page banner with CTAs"
+    ],
+    "notSuitableFor": [
+      "full-bleed background-image hero banners (use hero-overlay)",
+      "text-only heroes with no imagery"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/index", "/blog", "/faq", "/fashion-trends-young-adults-casual-sport"],
+    "reuseCount": 4,
+    "lastUsed": "2026-09-03T00:00:00.000Z"
+  }
+}

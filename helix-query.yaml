@@ -21,7 +21,7 @@ indices:
         value: |
           attribute(el, "content")
   french:
-<<: *default
+    <<: *default
     include:
       - /fr/**
     exclude:
