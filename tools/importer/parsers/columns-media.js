@@ -22,10 +22,19 @@ export default function parse(element, { document }) {
     return;
   }
 
+  // Preserve a leading centered intro (heading + lead paragraph) that sits
+  // before the grid as default content ahead of the block, so it isn't lost.
+  // On pages with no such intro (e.g. the homepage) this is a no-op.
+  const intro = element.querySelector('.utility-text-align-center');
+  const before = [];
+  if (intro && !grid.contains(intro) && intro !== grid) {
+    before.push(intro.cloneNode(true));
+  }
+
   const cells = [];
   // Single content row: one cell per source column (preserve full inner content)
   cells.push(columns.map((col) => col));
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'columns-media', cells });
-  element.replaceWith(block);
+  element.replaceWith(...before, block);
 }
