@@ -42,6 +42,19 @@ export default async function decorate(block) {
     });
     tablist.append(button);
     tab.remove();
+
+    // group the panel's text (everything after the image) into one centered column
+    const panelContent = tabpanel.firstElementChild;
+    if (panelContent) {
+      const imgPara = panelContent.querySelector('p:has(picture), p:has(img)');
+      const textNodes = [...panelContent.children].filter((c) => c !== imgPara);
+      if (imgPara && textNodes.length) {
+        const textWrap = document.createElement('div');
+        textWrap.className = 'tabs-profile-panel-text';
+        textNodes.forEach((n) => textWrap.append(n));
+        panelContent.append(textWrap);
+      }
+    }
   });
 
   block.prepend(tablist);

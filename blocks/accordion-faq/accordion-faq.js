@@ -5,7 +5,19 @@
  */
 
 export default function decorate(block) {
-  [...block.children].forEach((row) => {
+  // Pull the preceding default content (intro heading + lead paragraph) into the
+  // block so the whole section (intro + accordion items) shares one padded wrapper.
+  const wrapper = block.closest('.accordion-faq-wrapper') || block.parentElement;
+  const prev = wrapper && wrapper.previousElementSibling;
+  let intro = null;
+  if (prev && prev.classList.contains('default-content-wrapper')) {
+    intro = document.createElement('div');
+    intro.className = 'accordion-faq-intro';
+    while (prev.firstElementChild) intro.append(prev.firstElementChild);
+    prev.remove();
+  }
+
+  const items = [...block.children].map((row) => {
     // decorate accordion item label
     const label = row.children[0];
     const summary = document.createElement('summary');
@@ -18,6 +30,13 @@ export default function decorate(block) {
     const details = document.createElement('details');
     details.className = 'accordion-faq-item';
     details.append(summary, body);
-    row.replaceWith(details);
+    return details;
   });
+
+  block.textContent = '';
+  if (intro) block.append(intro);
+  const list = document.createElement('div');
+  list.className = 'accordion-faq-list';
+  list.append(...items);
+  block.append(list);
 }

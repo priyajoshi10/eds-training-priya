@@ -1,27 +1,114 @@
+/* cards-trend — centered intro + responsive grid of trend cards.
+   Values extracted from https://wknd-trendsetters.site/fashion-trends-young-adults-casual-sport (#trends). */
+
+/* Intro: centered heading + lead paragraph, pulled in from default content */
+.cards-trend .cards-trend-intro {
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.cards-trend .cards-trend-intro h2 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 44px;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.cards-trend .cards-trend-intro p {
+  margin: 12px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  line-height: 28.8px;
+  color: var(--text-color);
+}
+
+/* Grid — mobile-first: 1 column, then 2, then 4 */
 .cards-trend > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .cards-trend > ul > li {
-  border: 1px solid #dadada;
+  border: 1px solid rgb(232 232 232);
+  border-radius: 20px;
   background-color: var(--background-color);
+  overflow: hidden;
 }
 
-.cards-trend .cards-trend-card-body {
-  margin: 16px;
+/* Whole card is a single link (source behavior) */
+.cards-trend .cards-trend-card-link {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .cards-trend .cards-trend-card-image {
   line-height: 0;
 }
 
-.cards-trend > ul > li img {
+.cards-trend .cards-trend-card-image img {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.cards-trend .cards-trend-card-body {
+  padding: 24px;
+}
+
+/* Category eyebrow pill */
+.cards-trend .cards-trend-tag {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 12px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgb(244 254 139);
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 19.2px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.cards-trend .cards-trend-card-body h3 {
+  margin: 0 0 8px;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 19.8px;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.cards-trend .cards-trend-card-body p {
+  margin: 0;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 22.4px;
+  color: var(--link-color);
+}
+
+/* Tablet: 2 columns */
+@media (width >= 600px) {
+  .cards-trend > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 4 columns */
+@media (width >= 900px) {
+  .cards-trend > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
